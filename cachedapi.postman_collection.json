@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "09c53151-d8eb-4d16-9412-b4d4c5c8a78f",
+		"name": "cachedapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23129506"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/api/albums/getAlbumsByTitle?title=Back in Black",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/albums/getAlbumsByTitle?title=21",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"albums",
+						"getAlbumsByTitle"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/albums/addNewAlbum",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Paint It, Black\",\r\n    \"artist\": \"Rolling Stones\",\r\n    \"genre\": \"Rock\",\r\n    \"totalTracks\": \"1\",\r\n    \"durationMinutes\": \"4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/albums/addNewAlbum",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"albums",
+						"addNewAlbum"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/albums/updateAlbumByTitle",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Paint It, Black\",\r\n    \"artist\": \"The Rolling Stones\",\r\n    \"genre\": \"Rock\",\r\n    \"totalTracks\": \"1\",\r\n    \"durationMinutes\": \"4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/albums/updateAlbumByTitle",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"albums",
+						"updateAlbumByTitle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/albums/deleteAlbumByTitle?title=Paint It, Black",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/albums/deleteAlbumByTitle?title=Paint It, Black",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"albums",
+						"deleteAlbumByTitle"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Paint It, Black"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
