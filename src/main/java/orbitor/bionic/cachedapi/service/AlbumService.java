@@ -7,4 +7,11 @@ import org.springframework.stereotype.Repository;
 public interface AlbumService {
 
     AlbumDto getAlbumByTitle(String title);
+
+    void addNewAlbum(AlbumDto albumDto);
+
+    void updateNewAlbumByTitle(AlbumDto albumDto);
+
+    void deleteAlbumByTitle(String title);
+
 }

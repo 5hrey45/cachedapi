@@ -1,14 +1,12 @@
 package orbitor.bionic.cachedapi.controller;
 
 import orbitor.bionic.cachedapi.dto.AlbumDto;
+import orbitor.bionic.cachedapi.dto.ResponseDto;
 import orbitor.bionic.cachedapi.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -27,5 +25,29 @@ public class AlbumController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(albumDto);
+    }
+
+    @PostMapping("/addNewAlbum")
+    public ResponseEntity<ResponseDto> addNewAlbum(@RequestBody AlbumDto albumDto) {
+        albumService.addNewAlbum(albumDto);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new ResponseDto(HttpStatus.OK, "Resource created!"));
+    }
+
+    @PutMapping("/updateAlbumByArtist")
+    public ResponseEntity<ResponseDto> updateAlbumByArtist(@RequestBody AlbumDto albumDto) {
+        albumService.updateNewAlbumByTitle(albumDto);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new ResponseDto(HttpStatus.OK, "Resource updated!"));
+    }
+
+    @DeleteMapping("/deleteAlbumByArtist")
+    public ResponseEntity<ResponseDto> deleteAlbumByArtist(@RequestParam String title) {
+        albumService.deleteAlbumByTitle(title);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new ResponseDto(HttpStatus.OK, "Resource deleted!"));
     }
 }

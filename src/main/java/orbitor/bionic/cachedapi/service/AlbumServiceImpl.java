@@ -2,6 +2,7 @@ package orbitor.bionic.cachedapi.service;
 
 import orbitor.bionic.cachedapi.dto.AlbumDto;
 import orbitor.bionic.cachedapi.entity.Album;
+import orbitor.bionic.cachedapi.exception.ResourceAlreadyExistsException;
 import orbitor.bionic.cachedapi.exception.ResourceNotFoundException;
 import orbitor.bionic.cachedapi.mapper.AlbumMapper;
 import orbitor.bionic.cachedapi.repository.AlbumRepository;
@@ -32,5 +33,34 @@ public class AlbumServiceImpl implements AlbumService {
         AlbumDto albumDto = AlbumMapper.mapToAlbumDto(album, new AlbumDto());
 
         return albumDto;
+    }
+
+    @Override
+    public void addNewAlbum(AlbumDto albumDto) {
+        System.out.println("Hitting database");
+        Optional<Album> optionalAlbum = albumRepository.findByTitle(albumDto.getTitle());
+        if (optionalAlbum.isPresent())
+            throw new ResourceAlreadyExistsException("Album already exists for the title: " + albumDto.getTitle());
+        Album album = AlbumMapper.mapToAlbum(albumDto, new Album());
+        albumRepository.save(album);
+    }
+
+    @Override
+    public void updateNewAlbumByTitle(AlbumDto albumDto) {
+        System.out.println("Hitting database");
+        Optional<Album> optionalAlbum = albumRepository.findByTitle(albumDto.getTitle());
+        if (optionalAlbum.isEmpty())
+            throw new ResourceNotFoundException("No existing album found for title: " + albumDto.getTitle());
+        Album album = AlbumMapper.mapToAlbum(albumDto, new Album());
+        albumRepository.save(album);
+    }
+
+    @Override
+    public void deleteAlbumByTitle(String title) {
+        System.out.println("Hitting database");
+        Optional<Album> optionalAlbum = albumRepository.findByTitle(title);
+        if (optionalAlbum.isEmpty())
+            throw new ResourceNotFoundException("No existing album found for title: " + title);
+        albumRepository.deleteById(optionalAlbum.get().getId());
     }
 }
