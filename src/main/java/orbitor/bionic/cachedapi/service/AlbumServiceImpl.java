@@ -7,6 +7,8 @@ import orbitor.bionic.cachedapi.exception.ResourceNotFoundException;
 import orbitor.bionic.cachedapi.mapper.AlbumMapper;
 import orbitor.bionic.cachedapi.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +38,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
+    @CachePut(value = "AlbumCache", key = "#albumDto.title")
     public void addNewAlbum(AlbumDto albumDto) {
         System.out.println("Hitting database");
         Optional<Album> optionalAlbum = albumRepository.findByTitle(albumDto.getTitle());
@@ -46,6 +49,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
+    @CachePut(value = "AlbumCache", key = "#albumDto.title")
     public void updateNewAlbumByTitle(AlbumDto albumDto) {
         System.out.println("Hitting database");
         Optional<Album> optionalAlbum = albumRepository.findByTitle(albumDto.getTitle());
@@ -56,6 +60,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
+    @CacheEvict(value = "AlbumCache", key = "#title")
     public void deleteAlbumByTitle(String title) {
         System.out.println("Hitting database");
         Optional<Album> optionalAlbum = albumRepository.findByTitle(title);
