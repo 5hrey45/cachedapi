@@ -35,16 +35,16 @@ public class AlbumController {
                 .body(new ResponseDto(HttpStatus.OK, "Resource created!"));
     }
 
-    @PutMapping("/updateAlbumByArtist")
-    public ResponseEntity<ResponseDto> updateAlbumByArtist(@RequestBody AlbumDto albumDto) {
+    @PutMapping("/updateAlbumByTitle")
+    public ResponseEntity<ResponseDto> updateAlbumByTitle(@RequestBody AlbumDto albumDto) {
         albumService.updateNewAlbumByTitle(albumDto);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new ResponseDto(HttpStatus.OK, "Resource updated!"));
     }
 
-    @DeleteMapping("/deleteAlbumByArtist")
-    public ResponseEntity<ResponseDto> deleteAlbumByArtist(@RequestParam String title) {
+    @DeleteMapping("/deleteAlbumByTitle")
+    public ResponseEntity<ResponseDto> deleteAlbumByTitle(@RequestParam String title) {
         albumService.deleteAlbumByTitle(title);
         return ResponseEntity
                 .status(HttpStatus.OK)
