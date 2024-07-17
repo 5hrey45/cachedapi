@@ -55,7 +55,7 @@ public class AlbumServiceImpl implements AlbumService {
         Optional<Album> optionalAlbum = albumRepository.findByTitle(albumDto.getTitle());
         if (optionalAlbum.isEmpty())
             throw new ResourceNotFoundException("No existing album found for title: " + albumDto.getTitle());
-        Album album = AlbumMapper.mapToAlbum(albumDto, new Album());
+        Album album = AlbumMapper.mapToAlbum(albumDto, optionalAlbum.get());
         albumRepository.save(album);
     }
 
