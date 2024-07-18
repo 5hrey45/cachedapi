@@ -1,6 +1,20 @@
 # cachedapi
 Make APIs performant by caching with caffeine
 
+## Table of contents
+- [Caffeine Caching](#caffeine-caching)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+  - [Clone the repository](#clone-the-repository)
+  - [PostgreSQL Setup](#postgresql-setup)
+    - [Enable logging for debugging](#enable-logging-for-debugging)
+  - [Build the project](#build-the-project)
+  - [Run the application](#run-the-application)
+- [Testing with Postman](#testing-with-postman)
+- [Caffeine configuration](#caffeine-configuration)
+  - [Key difference between eviction policies](#key-difference-between-eviction-policies)
+  - [Comparison and Use Cases](#comparison-and-use-cases)
+
 ## Caffeine Caching
 
 - The API uses [Caffeine](https://github.com/ben-manes/caffeine) caching to store and retrieve frequently accessed data
@@ -31,8 +45,8 @@ spring.datasource.username=postgres
 spring.datasource.password=root
 ```
 
-#### Uncomment to enable logging of Hibernate JPA for debugging
-
+#### Enable logging for debugging
+- Uncomment to enable logging of Hibernate JPA for debugging
 ```
 # Add logging configs for SQL statements
 # log SQL statements
@@ -63,7 +77,7 @@ mvn spring-boot:run
   - Entry is evicted if the specified duration is elapsed since the entry was last accessed
 - Change the cache eviction policy accordingly to your application needs
 
-### Key difference between expire after write and expire after access
+### Key difference between eviction policies
 #### Expire after write
 - This policy evicts an entry from the cache after a fixed duration has passed since the entry was created or last updated
 - The timer starts when an entry is added to the cache or when its value is updated
@@ -80,7 +94,7 @@ mvn spring-boot:run
   Let's say you're caching user profiles. You want to keep profiles in the cache as long as they're being accessed regularly,
   but remove them if they haven't been accessed for an hour.
 
-### Comparison and Use Cases:
+### Comparison and Use Cases
 
 #### Use expire-after-write when:
 
