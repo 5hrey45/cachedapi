@@ -3,6 +3,7 @@ Make APIs performant by caching with caffeine
 
 ## Table of contents
 - [Caffeine Caching](#caffeine-caching)
+- [Performance metrics](#performance-metrics)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
   - [Clone the repository](#clone-the-repository)
@@ -21,6 +22,17 @@ Make APIs performant by caching with caffeine
 
 - The API uses [Caffeine](https://github.com/ben-manes/caffeine) caching to store and retrieve frequently accessed data
 - This reduces the load on the database and improves the response time of the API
+
+## Performance metrics
+
+- The API was tested for performance with fixed load of 100 users over a period of 1 minute
+
+| Metrics | Without caching  | With caching     |
+| ------- |------------------|------------------|
+| Total requests sent | 2635             | 5031             |
+| Throughput | 39.39 requests/s | 73.80 requests/s |
+| Average response time | 52 ms            | 10 ms            |
+| 90th ms | 99 ms            | 4 ms             |
 
 ## Prerequisites
 - Java 21
