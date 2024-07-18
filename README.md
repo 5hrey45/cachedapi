@@ -85,8 +85,8 @@ mvn spring-boot:run
 
 ## Caffeine configuration
 - You can find the caffeine configuration class under the `cache` package
-- The AlbumCache is the cache name and is configured with an initial capacity of 50 and maximum capacity of 250
-- The entries will be automatically evicted if any of the below conditons are satisfied:
+- The cache name is albumCache and is configured with an initial capacity of 50 and maximum capacity of 250
+- The entries will be automatically evicted if any of the below conditions are satisfied:
   - The maximum capacity of cache is exceeded
   - Entry is evicted if the specified duration is elapsed since the entry was last accessed
 - Change the cache eviction policy accordingly to your application needs
