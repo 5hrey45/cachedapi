@@ -22,8 +22,8 @@ Make APIs performant by caching with caffeine
 
 ### Clone the repository
 ```
-git clone https://github.com/your-username/simple-rest-api.git
-cd simple-rest-api
+git clone https://github.com/5hrey45/cachedapi.git
+cd cachedapi
 ```
 
 ### PostgreSQL Setup
