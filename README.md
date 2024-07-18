@@ -12,6 +12,8 @@ Make APIs performant by caching with caffeine
   - [Run the application](#run-the-application)
 - [Testing with Postman](#testing-with-postman)
 - [Caffeine configuration](#caffeine-configuration)
+  - [Lazy caching](#lazy-caching)
+  - [Write-through caching](#write-through-caching)
   - [Key difference between eviction policies](#key-difference-between-eviction-policies)
   - [Comparison and Use Cases](#comparison-and-use-cases)
 
@@ -76,6 +78,13 @@ mvn spring-boot:run
   - The maximum capacity of cache is exceeded
   - Entry is evicted if the specified duration is elapsed since the entry was last accessed
 - Change the cache eviction policy accordingly to your application needs
+
+### Lazy caching
+- The caching mechanism is lazy caching, also called lazy population and cache-aside, and the cache is only populated
+  when an object is actually requested by the application
+
+### Write-through caching
+- I've also used write-through caching, which means the cache is updated in real time when the database is updated
 
 ### Key difference between eviction policies
 #### Expire after write
