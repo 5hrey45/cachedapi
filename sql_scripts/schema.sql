@@ -1,0 +1,10 @@
+CREATE TABLE albums (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    artist VARCHAR(255) NOT NULL,
+    genre VARCHAR(100),
+    total_tracks INTEGER,
+    duration_minutes INTEGER,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
