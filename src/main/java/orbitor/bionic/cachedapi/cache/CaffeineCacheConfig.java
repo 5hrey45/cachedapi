@@ -15,7 +15,7 @@ public class CaffeineCacheConfig {
     @Bean
     public Caffeine<Object, Object> caffeineConfig() {
         return Caffeine.newBuilder()
-                .expireAfterWrite(Duration.ofMinutes(5))
+                .expireAfterAccess(Duration.ofMinutes(5))
                 .initialCapacity(50)
                 .maximumSize(250);
     }
@@ -24,7 +24,7 @@ public class CaffeineCacheConfig {
     public CacheManager cacheManager(Caffeine caffeine) {
         CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
         caffeineCacheManager.setCaffeine(caffeine);
-        caffeineCacheManager.setCacheNames(List.of("AlbumCache"));
+        caffeineCacheManager.setCacheNames(List.of("albumCache"));
         return caffeineCacheManager;
     }
 }

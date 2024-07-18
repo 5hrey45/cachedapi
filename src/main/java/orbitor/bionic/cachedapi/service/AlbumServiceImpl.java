@@ -25,7 +25,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    @Cacheable(value = "AlbumCache", key = "#title")
+    @Cacheable(value = "albumCache", key = "#title")
     public AlbumDto getAlbumByTitle(String title) {
         System.out.println("Hitting database");
         Optional<Album> optionalAlbum = albumRepository.findByTitle(title);
@@ -38,7 +38,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    @CachePut(value = "AlbumCache", key = "#albumDto.title")
+    @CachePut(value = "albumCache", key = "#albumDto.title")
     public void addNewAlbum(AlbumDto albumDto) {
         System.out.println("Hitting database");
         Optional<Album> optionalAlbum = albumRepository.findByTitle(albumDto.getTitle());
@@ -49,7 +49,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    @CachePut(value = "AlbumCache", key = "#albumDto.title")
+    @CachePut(value = "albumCache", key = "#albumDto.title")
     public void updateNewAlbumByTitle(AlbumDto albumDto) {
         System.out.println("Hitting database");
         Optional<Album> optionalAlbum = albumRepository.findByTitle(albumDto.getTitle());
@@ -60,7 +60,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    @CacheEvict(value = "AlbumCache", key = "#title")
+    @CacheEvict(value = "albumCache", key = "#title")
     public void deleteAlbumByTitle(String title) {
         System.out.println("Hitting database");
         Optional<Album> optionalAlbum = albumRepository.findByTitle(title);
